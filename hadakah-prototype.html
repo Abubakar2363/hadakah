@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Hadakah Enterprise — Saudi Arabia's trusted trading, advertising, promotion, and calligraphy partner since 1998." />
+<title>Hadakah Enterprise · Trading · Advertising · Promotion · Calligraphy</title>
+
+<!-- Suppress Tailwind CDN production warning BEFORE Tailwind loads -->
+<script>
+  (function() {
+    const originalWarn = console.warn;
+    console.warn = function(...args) {
+      const msg = args[0];
+      if (typeof msg === 'string' && msg.includes('cdn.tailwindcss.com should not be used in production')) return;
+      originalWarn.apply(console, args);
+    };
+  })();
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { DEFAULT: '#0A2A3F', deep: '#061B2B', light: '#1B4761' },
+          gold: { DEFAULT: '#C89D4F', soft: '#EFE0C5', deep: '#9C7838' },
+          green: { DEFAULT: '#1FB969', deep: '#159952' },
+          surface: '#FAFAF7',
+          ink: { DEFAULT: '#1F2933', soft: '#4B5563', muted: '#6B7280' },
+          line: '#E5E7EB',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['"DM Sans"', 'sans-serif'],
+          arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+          arabicDisplay: ['Amiri', 'serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<!-- Icons inlined as SVG (no CDN dependency) -->
+
+<style>
+  :root {
+    --navy: #0A2A3F;
+    --navy-deep: #061B2B;
+    --gold: #C89D4F;
+    --gold-soft: #EFE0C5;
+    --green: #1FB969;
+    --surface: #FAFAF7;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: #1F2933;
+    background: #FAFAF7;
+    overflow-x: hidden;
+  }
+
+  /* Arabic font when locale is Arabic */
+  html[dir="rtl"] body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+  html[dir="rtl"] .font-display { font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 700; }
+  html[dir="rtl"] .font-arabic-display { font-family: 'Amiri', serif; }
+
+  /* Hide language-specific content */
+  [data-lang="en"] { display: inline; }
+  [data-lang="ar"] { display: none; }
+  html[dir="rtl"] [data-lang="en"] { display: none; }
+  html[dir="rtl"] [data-lang="ar"] { display: inline; }
+
+  /* Block-level locale switching for elements that need it */
+  .lang-block[data-lang="en"] { display: block; }
+  .lang-block[data-lang="ar"] { display: none; }
+  html[dir="rtl"] .lang-block[data-lang="en"] { display: none; }
+  html[dir="rtl"] .lang-block[data-lang="ar"] { display: block; }
+
+  /* Hero gradient background */
+  .hero-bg {
+    background:
+      radial-gradient(circle at 20% 50%, rgba(200, 157, 79, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(200, 157, 79, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #061B2B 0%, #0A2A3F 50%, #1B4761 100%);
+  }
+
+  /* Subtle geometric pattern overlay (Saudi-inspired) */
+  .pattern-overlay {
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C89D4F' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Grain texture */
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Gold thin accent line */
+  .gold-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  /* Reveal animations */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Hero entrance — CSS-only, runs immediately on page load (no JS dependency) */
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-fade { opacity: 0; animation: heroFadeIn 0.9s ease forwards; }
+  .hero-fade-1 { animation-delay: 0s; }
+  .hero-fade-2 { animation-delay: 0.15s; }
+  .hero-fade-3 { animation-delay: 0.3s; }
+  .hero-fade-4 { animation-delay: 0.45s; }
+  .hero-fade-5 { animation-delay: 0.6s; }
+
+  /* Smooth language transition */
+  .lang-fade { transition: opacity 0.3s ease; }
+  .lang-fade.fading { opacity: 0; }
+
+  /* Service card hover */
+  .service-card {
+    transition: transform 0.4s cubic-bezier(.2,.7,.3,1), box-shadow 0.4s ease;
+    position: relative;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease;
+  }
+  html[dir="rtl"] .service-card::before { left: auto; right: 0; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px -20px rgba(10, 42, 63, 0.25); }
+  .service-card:hover::before { transform: scaleY(1); transform-origin: top; }
+
+  /* Project card image placeholder */
+  .project-image {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M20 0L0 20l20 20 20-20z' stroke='%23C89D4F' stroke-opacity='0.15' fill='none'/%3E%3C/svg%3E");
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy-deep);
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+  }
+  .btn-primary:hover { background: var(--gold-deep, #9C7838); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(200, 157, 79, 0.6);
+    color: var(--gold);
+    background: transparent;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  .btn-outline:hover { background: rgba(200, 157, 79, 0.1); border-color: var(--gold); }
+
+  .btn-cta {
+    background: var(--green);
+    color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+  }
+  .btn-cta:hover { background: var(--green-deep, #159952); transform: translateY(-2px); }
+
+  /* Number ticker style */
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+  }
+
+  /* Form inputs */
+  .form-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .form-input:focus { border-color: var(--gold); background: rgba(255, 255, 255, 0.06); outline: none; }
+  .form-input::placeholder { color: rgba(255, 255, 255, 0.4); }
+  .form-input.light {
+    background: white;
+    border: 1px solid #E5E7EB;
+    color: var(--ink, #1F2933);
+  }
+  .form-input.light::placeholder { color: #9CA3AF; }
+  .form-input.light:focus { border-color: var(--gold); background: white; box-shadow: 0 0 0 3px rgba(200, 157, 79, 0.15); }
+
+  /* Floating WhatsApp button pulse */
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse-ring 2s ease-out infinite;
+    z-index: -1;
+  }
+
+  /* Logo placeholder */
+  .client-logo {
+    background: white;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 1.5;
+    color: #9CA3AF;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+  }
+  .client-logo:hover {
+    border-color: var(--gold);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--green);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(31, 185, 105, 0.3);
+    transition: transform 0.4s cubic-bezier(.2,.7,.3,1);
+    z-index: 1000;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Mobile menu */
+  .mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(.2,.7,.3,1);
+  }
+  html[dir="rtl"] .mobile-menu { transform: translateX(-100%); }
+  .mobile-menu.open { transform: translateX(0); }
+
+  /* Service icon ornament */
+  .service-icon-frame {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--gold-soft), white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    box-shadow: inset 0 0 0 1px rgba(200, 157, 79, 0.3);
+  }
+
+  /* Underline animation for nav links */
+  .nav-link {
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.3s ease;
+  }
+  .nav-link:hover::after, .nav-link.active::after { transform: translateX(-50%) scaleX(1); }
+
+  /* Scroll-driven nav blur */
+  .nav-scrolled {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: rgba(10, 42, 63, 0.3); border-radius: 5px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(10, 42, 63, 0.5); }
+
+  /* Phone numbers always LTR */
+  .phone-ltr { direction: ltr; unicode-bidi: embed; display: inline-block; }
+
+  /* Section heading style */
+  .section-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  html[dir="rtl"] .section-eyebrow { font-family: 'IBM Plex Sans Arabic', sans-serif; letter-spacing: 0.05em; }
+
+  /* RTL-aware utilities */
+  [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+
+  /* Hide arabic where unnecessary in english mode */
+  html[dir="ltr"] .ar-only { display: none; }
+  html[dir="rtl"] .en-only { display: none; }
+
+  /* Accordion-ish timeline */
+  .timeline-step {
+    position: relative;
+  }
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 1px;
+    height: calc(100% - 24px);
+    background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);
+  }
+  html[dir="rtl"] .timeline-step::before { left: auto; right: 24px; }
+  .timeline-step:last-child::before { display: none; }
+
+  /* Selection */
+  ::selection { background: var(--gold); color: var(--navy-deep); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============================================== -->
+<!-- NAVIGATION -->
+<!-- ============================================== -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/85 backdrop-blur-md border-b border-line/50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-gradient-to-br from-gold to-gold-deep rounded flex items-center justify-center">
+        <span class="font-display font-bold text-navy-deep text-lg" data-lang="en">H</span>
+        <span class="font-display font-bold text-navy-deep text-lg" data-lang="ar">ه</span>
+      </div>
+      <div>
+        <div class="font-display font-bold text-navy text-xl leading-none">
+          <span data-lang="en">Hadakah</span>
+          <span data-lang="ar">هَدَكَة</span>
+        </div>
+        <div class="text-[10px] tracking-[0.25em] uppercase text-gold mt-0.5">
+          <span data-lang="en">Enterprise · Est. 1998</span>
+          <span data-lang="ar">مؤسسة · تأسست ١٩٩٨</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-ink">
+      <a href="#about" class="nav-link"><span data-lang="en">About</span><span data-lang="ar">من نحن</span></a>
+      <a href="#services" class="nav-link"><span data-lang="en">Services</span><span data-lang="ar">خدماتنا</span></a>
+      <a href="#projects" class="nav-link"><span data-lang="en">Projects</span><span data-lang="ar">أعمالنا</span></a>
+      <a href="#process" class="nav-link"><span data-lang="en">Process</span><span data-lang="ar">منهجيتنا</span></a>
+      <a href="#contact" class="nav-link"><span data-lang="en">Contact</span><span data-lang="ar">تواصل</span></a>
+    </nav>
+
+    <!-- Right side: language + CTA -->
+    <div class="flex items-center gap-3">
+      <button id="langToggle" class="hidden sm:flex items-center gap-2 px-3 py-2 text-sm font-medium text-navy hover:text-gold transition-colors">
+        <i data-lucide="globe" class="w-4 h-4"></i>
+        <span data-lang="en">العربية</span>
+        <span data-lang="ar">English</span>
+      </button>
+      <a href="#contact" class="btn-primary px-5 py-2.5 rounded-md text-sm hidden md:inline-block">
+        <span data-lang="en">Get a Quote</span>
+        <span data-lang="ar">اطلب عرض سعر</span>
+      </a>
+      <button id="mobileMenuBtn" class="lg:hidden p-2 text-navy">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu drawer -->
+<div id="mobileMenu" class="mobile-menu fixed top-0 right-0 bottom-0 w-80 max-w-full bg-white z-[60] shadow-2xl lg:hidden">
+  <div class="p-6 flex justify-between items-center border-b border-line">
+    <span class="font-display font-bold text-navy text-lg">
+      <span data-lang="en">Menu</span>
+      <span data-lang="ar">القائمة</span>
+    </span>
+    <button id="mobileMenuClose" class="p-2"><i data-lucide="x" class="w-5 h-5"></i></button>
+  </div>
+  <nav class="flex flex-col p-6 gap-1">
+    <a href="#about" class="mobile-link py-3 px-4 rounded-md text-ink hover:bg-surface font-medium">
+      <span data-lang="en">About</span><span data-lang="ar">من نحن</span>
+    </a>
+    <a href="#services" class="mobile-link py-3 px-4 rounded-md text-ink hover:bg-surface font-medium">
+      <span data-lang="en">Services</span><span data-lang="ar">خدماتنا</span>
+    </a>
+    <a href="#projects" class="mobile-link py-3 px-4 rounded-md text-ink hover:bg-surface font-medium">
+      <span data-lang="en">Projects</span><span data-lang="ar">أعمالنا</span>
+    </a>
+    <a href="#process" class="mobile-link py-3 px-4 rounded-md text-ink hover:bg-surface font-medium">
+      <span data-lang="en">Process</span><span data-lang="ar">منهجيتنا</span>
+    </a>
+    <a href="#contact" class="mobile-link py-3 px-4 rounded-md text-ink hover:bg-surface font-medium">
+      <span data-lang="en">Contact</span><span data-lang="ar">تواصل معنا</span>
+    </a>
+    <button id="langToggleMobile" class="mt-4 flex items-center gap-2 py-3 px-4 rounded-md text-navy bg-surface font-medium">
+      <i data-lucide="globe" class="w-4 h-4"></i>
+      <span data-lang="en">العربية / Switch to Arabic</span>
+      <span data-lang="ar">English / التبديل إلى الإنجليزية</span>
+    </button>
+    <a href="#contact" class="btn-primary mt-3 py-3 px-4 rounded-md text-center">
+      <span data-lang="en">Get a Quote</span>
+      <span data-lang="ar">اطلب عرض سعر</span>
+    </a>
+  </nav>
+</div>
+<div id="mobileBackdrop" class="fixed inset-0 bg-black/40 z-50 hidden lg:hidden"></div>
+
+<!-- ============================================== -->
+<!-- HERO -->
+<!-- ============================================== -->
+<section id="home" class="relative hero-bg grain min-h-screen flex items-center pt-20 overflow-hidden">
+  <!-- Pattern overlay as separate layer (doesn't override hero-bg gradient) -->
+  <div class="absolute inset-0 pattern-overlay pointer-events-none"></div>
+
+  <!-- Decorative side accent -->
+  <div class="absolute top-1/2 -translate-y-1/2 left-0 ltr:left-0 rtl:right-0 w-1 h-32 bg-gold hidden lg:block"></div>
+
+  <!-- Decorative geometric ornament -->
+  <div class="absolute top-32 right-12 w-64 h-64 hidden lg:block opacity-30 rtl:right-auto rtl:left-12">
+    <svg viewBox="0 0 200 200" class="w-full h-full" fill="none" stroke="#C89D4F" stroke-width="0.5">
+      <circle cx="100" cy="100" r="80" />
+      <circle cx="100" cy="100" r="60" />
+      <circle cx="100" cy="100" r="40" />
+      <path d="M100 20 L180 100 L100 180 L20 100 Z" />
+      <path d="M100 40 L160 100 L100 160 L40 100 Z" />
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-24 relative w-full">
+    <div class="max-w-4xl">
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-8 hero-fade hero-fade-1">
+        <span class="gold-rule"></span>
+        <span class="text-gold tracking-[0.3em] uppercase text-xs font-semibold">
+          <span data-lang="en">Saudi Arabia · Eastern Province</span>
+          <span data-lang="ar">المملكة العربية السعودية · المنطقة الشرقية</span>
+        </span>
+      </div>
+
+      <!-- Hero headline -->
+      <h1 class="font-display font-light text-white text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-8 hero-fade hero-fade-2">
+        <span data-lang="en" class="lang-block">
+          A Saudi house of <em class="text-gold not-italic font-medium">trade</em> &amp; <em class="text-gold not-italic font-medium">craft</em> since 1998.
+        </span>
+        <span data-lang="ar" class="lang-block">
+          بيتٌ سعوديٌّ للـ<em class="text-gold not-italic font-medium">تجارة</em> والـ<em class="text-gold not-italic font-medium">إبداع</em> منذ عام ١٩٩٨.
+        </span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-white/80 text-lg lg:text-xl max-w-2xl leading-relaxed mb-10 hero-fade hero-fade-3">
+        <span data-lang="en">
+          For over twenty-five years, Hadakah Enterprise has served the Kingdom across four disciplines —
+          general trading, advertising, promotion, and the time-honoured art of Arabic calligraphy.
+        </span>
+        <span data-lang="ar">
+          منذ أكثر من خمسة وعشرين عاماً، تخدم مؤسسة هَدَكَة المملكة العربية السعودية في أربعة مجالات —
+          التجارة العامة، الإعلان، الترويج، وفنّ الخط العربي العريق.
+        </span>
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap items-center gap-4 hero-fade hero-fade-4">
+        <a href="#services" class="btn-primary px-7 py-3.5 rounded-md inline-flex items-center gap-2">
+          <span data-lang="en">Explore Our Services</span>
+          <span data-lang="ar">اكتشف خدماتنا</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 rtl-flip"></i>
+        </a>
+        <a href="#contact" class="btn-outline px-7 py-3.5 rounded-md inline-flex items-center gap-2">
+          <span data-lang="en">Start a Conversation</span>
+          <span data-lang="ar">ابدأ محادثة</span>
+        </a>
+      </div>
+
+      <!-- Bottom strip -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-12 max-w-3xl hero-fade hero-fade-5">
+        <div>
+          <div class="stat-number text-gold text-3xl lg:text-4xl font-light">25<span class="text-xl">+</span></div>
+          <div class="text-white/60 text-sm tracking-wide">
+            <span data-lang="en">Years of trust</span>
+            <span data-lang="ar">عاماً من الثقة</span>
+          </div>
+        </div>
+        <div>
+          <div class="stat-number text-gold text-3xl lg:text-4xl font-light">4</div>
+          <div class="text-white/60 text-sm tracking-wide">
+            <span data-lang="en">Disciplines</span>
+            <span data-lang="ar">مجالات</span>
+          </div>
+        </div>
+        <div>
+          <div class="stat-number text-gold text-3xl lg:text-4xl font-light">200<span class="text-xl">+</span></div>
+          <div class="text-white/60 text-sm tracking-wide">
+            <span data-lang="en">Projects delivered</span>
+            <span data-lang="ar">مشروعاً منجزاً</span>
+          </div>
+        </div>
+        <div>
+          <div class="stat-number text-gold text-3xl lg:text-4xl font-light">1998</div>
+          <div class="text-white/60 text-sm tracking-wide">
+            <span data-lang="en">Founded in Al-Khobar</span>
+            <span data-lang="ar">تأسّست في الخُبَر</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 hidden md:flex flex-col items-center gap-2">
+    <span class="text-[10px] tracking-[0.3em] uppercase">
+      <span data-lang="en">Scroll</span>
+      <span data-lang="ar">للأسفل</span>
+    </span>
+    <div class="w-px h-12 bg-white/20"></div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- ABOUT STRIP -->
+<!-- ============================================== -->
+<section id="about" class="relative py-24 lg:py-32 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Left: section label + heading -->
+      <div class="lg:col-span-5 reveal">
+        <div class="section-eyebrow mb-4">
+          <span data-lang="en">About Hadakah</span>
+          <span data-lang="ar">عن هَدَكَة</span>
+        </div>
+        <h2 class="font-display font-light text-navy text-4xl lg:text-5xl leading-tight mb-6">
+          <span data-lang="en" class="lang-block">A quietly established<br>Saudi name.</span>
+          <span data-lang="ar" class="lang-block">اسمٌ سعوديٌّ<br>راسخٌ بهدوء.</span>
+        </h2>
+        <span class="gold-rule"></span>
+      </div>
+
+      <!-- Right: paragraph + values -->
+      <div class="lg:col-span-7 reveal" style="transition-delay:0.15s">
+        <p class="text-ink-soft text-lg leading-relaxed mb-6">
+          <span data-lang="en">
+            Hadakah Enterprise was founded in Al-Khobar in 1998 with a single conviction —
+            that trust is built one client, one project, one delivered promise at a time.
+            For more than two decades that conviction has carried us across four disciplines.
+          </span>
+          <span data-lang="ar">
+            تأسست مؤسسة هَدَكَة في الخُبَر عام ١٩٩٨ بقناعةٍ واحدة —
+            أنّ الثقة تُبنى عميلاً تلو الآخر، ومشروعاً تلو الآخر، ووعداً منجزاً تلو الآخر.
+            ولأكثر من عقدين، حملتنا هذه القناعة عبر أربعة مجالات.
+          </span>
+        </p>
+        <p class="text-ink-soft text-lg leading-relaxed mb-10">
+          <span data-lang="en">
+            Today we serve government bodies, private enterprises, and creative ateliers
+            across the Kingdom — combining the practical reach of a trading house with the
+            careful eye of a creative studio.
+          </span>
+          <span data-lang="ar">
+            اليوم، نخدم الجهات الحكومية والشركات الخاصة والورش الإبداعية في جميع أنحاء المملكة —
+            جامعين بين الانتشار العمليّ لبيت التجارة والعين الفنية المُتأنية للاستوديو الإبداعي.
+          </span>
+        </p>
+
+        <!-- Values grid -->
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="border-t border-gold/40 pt-4">
+            <div class="font-display text-navy text-2xl font-medium mb-1">
+              <span data-lang="en">Heritage</span>
+              <span data-lang="ar">الأصالة</span>
+            </div>
+            <div class="text-ink-muted text-sm leading-relaxed">
+              <span data-lang="en">Saudi-rooted, multi-generational thinking.</span>
+              <span data-lang="ar">جذورٌ سعوديةٌ وتفكيرٌ يمتدّ عبر الأجيال.</span>
+            </div>
+          </div>
+          <div class="border-t border-gold/40 pt-4">
+            <div class="font-display text-navy text-2xl font-medium mb-1">
+              <span data-lang="en">Craft</span>
+              <span data-lang="ar">الحِرفة</span>
+            </div>
+            <div class="text-ink-muted text-sm leading-relaxed">
+              <span data-lang="en">Detail-obsessed in everything we deliver.</span>
+              <span data-lang="ar">شغفٌ بالتفاصيل في كلّ ما نقدّمه.</span>
+            </div>
+          </div>
+          <div class="border-t border-gold/40 pt-4">
+            <div class="font-display text-navy text-2xl font-medium mb-1">
+              <span data-lang="en">Trust</span>
+              <span data-lang="ar">الثقة</span>
+            </div>
+            <div class="text-ink-muted text-sm leading-relaxed">
+              <span data-lang="en">Built one promise kept at a time.</span>
+              <span data-lang="ar">تُبنى وعداً منجزاً في كلّ مرة.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SERVICES -->
+<!-- ============================================== -->
+<section id="services" class="relative py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="max-w-3xl mb-16 lg:mb-20 reveal">
+      <div class="section-eyebrow mb-4">
+        <span data-lang="en">Our Disciplines</span>
+        <span data-lang="ar">مجالاتنا</span>
+      </div>
+      <h2 class="font-display font-light text-navy text-4xl lg:text-5xl leading-tight mb-4">
+        <span data-lang="en" class="lang-block">Four houses, one standard.</span>
+        <span data-lang="ar" class="lang-block">أربعة بيوتٍ، معيارٌ واحد.</span>
+      </h2>
+      <p class="text-ink-soft text-lg leading-relaxed">
+        <span data-lang="en">
+          From corporate trading to bespoke calligraphy, every Hadakah engagement begins with
+          listening — and ends with something we are proud to put our name behind.
+        </span>
+        <span data-lang="ar">
+          من التجارة المؤسسية إلى الخطّ العربي المُخصّص، تبدأ كلّ مهمّةٍ في هَدَكَة بالإصغاء —
+          وتنتهي بعملٍ نفخر بأن نضع اسمنا عليه.
+        </span>
+      </p>
+    </div>
+
+    <!-- Service cards grid -->
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+
+      <!-- Trading -->
+      <div class="service-card bg-white border border-line rounded-lg p-8 lg:p-10 reveal" style="transition-delay:0s">
+        <div class="flex items-start justify-between mb-6">
+          <div class="service-icon-frame">
+            <i data-lucide="package" class="w-6 h-6"></i>
+          </div>
+          <span class="text-gold/40 font-display text-5xl font-light leading-none">01</span>
+        </div>
+        <h3 class="font-display text-navy text-3xl font-medium mb-3">
+          <span data-lang="en">Trading</span>
+          <span data-lang="ar">التجارة</span>
+        </h3>
+        <p class="text-ink-soft leading-relaxed mb-6">
+          <span data-lang="en">
+            Hadakah Trading is the heart of our enterprise — supplying nine categories of goods
+            to corporate, institutional, and government clients across the Eastern Province.
+          </span>
+          <span data-lang="ar">
+            تجارة هَدَكَة هي قلب مؤسستنا — نُورِّد تسع فئاتٍ من المنتجات
+            للعملاء الحكوميّين والمؤسسيّين في المنطقة الشرقية.
+          </span>
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm text-ink-soft mb-6">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Electrical equipment</span><span data-lang="ar">المعدّات الكهربائية</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Electronics devices</span><span data-lang="ar">الأجهزة الإلكترونية</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Gifts &amp; promotions</span><span data-lang="ar">الهدايا والمواد الترويجية</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Industrial safety equipment</span><span data-lang="ar">معدّات السلامة الصناعية</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Industrial uniforms</span><span data-lang="ar">الزيّ الموحّد الصناعي</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Computers &amp; accessories</span><span data-lang="ar">الحواسيب وملحقاتها</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Photography &amp; copy equipment</span><span data-lang="ar">معدّات التصوير والاستنساخ</span></span></li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">Telecom &amp; communication devices</span><span data-lang="ar">أجهزة الاتصالات</span></span></li>
+          <li class="flex items-start gap-2 sm:col-span-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0 mt-0.5"></i><span><span data-lang="en">General supplies for offices, factories &amp; hospitals</span><span data-lang="ar">مستلزمات عامة للمكاتب والمصانع والمستشفيات</span></span></li>
+        </ul>
+        <a href="#contact" class="text-navy font-medium inline-flex items-center gap-2 hover:text-gold transition-colors">
+          <span data-lang="en">Request a quote</span>
+          <span data-lang="ar">اطلب عرض سعر</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 rtl-flip"></i>
+        </a>
+      </div>
+
+      <!-- Advertising -->
+      <div class="service-card bg-white border border-line rounded-lg p-8 lg:p-10 reveal" style="transition-delay:0.1s">
+        <div class="flex items-start justify-between mb-6">
+          <div class="service-icon-frame">
+            <i data-lucide="megaphone" class="w-6 h-6"></i>
+          </div>
+          <span class="text-gold/40 font-display text-5xl font-light leading-none">02</span>
+        </div>
+        <h3 class="font-display text-navy text-3xl font-medium mb-3">
+          <span data-lang="en">Advertising</span>
+          <span data-lang="ar">الإعلان</span>
+        </h3>
+        <p class="text-ink-soft leading-relaxed mb-6">
+          <span data-lang="en">
+            Strategic advertising for the Saudi market — print, outdoor, and digital
+            campaigns that elevate brand presence with discipline and a sense of place.
+          </span>
+          <span data-lang="ar">
+            إعلانٌ استراتيجيٌّ للسوق السعودية — حملاتٌ مطبوعة، خارجية، ورقمية
+            ترفع من حضور العلامة التجارية بانضباطٍ وحضورٍ متجذّر.
+          </span>
+        </p>
+        <ul class="space-y-2 text-sm text-ink-soft mb-6">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Print &amp; outdoor campaign production</span><span data-lang="ar">إنتاج حملات الطباعة والإعلان الخارجي</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Digital advertising for KSA channels</span><span data-lang="ar">إعلانات رقمية لقنوات المملكة</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Bilingual EN ⇄ AR creative direction</span><span data-lang="ar">إخراجٌ إبداعيٌّ ثنائيّ اللغة</span></li>
+        </ul>
+        <a href="#contact" class="text-navy font-medium inline-flex items-center gap-2 hover:text-gold transition-colors">
+          <span data-lang="en">Brief our team</span>
+          <span data-lang="ar">اطلب استشارة</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 rtl-flip"></i>
+        </a>
+      </div>
+
+      <!-- Promotion -->
+      <div class="service-card bg-white border border-line rounded-lg p-8 lg:p-10 reveal" style="transition-delay:0.2s">
+        <div class="flex items-start justify-between mb-6">
+          <div class="service-icon-frame">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <span class="text-gold/40 font-display text-5xl font-light leading-none">03</span>
+        </div>
+        <h3 class="font-display text-navy text-3xl font-medium mb-3">
+          <span data-lang="en">Promotion</span>
+          <span data-lang="ar">الترويج</span>
+        </h3>
+        <p class="text-ink-soft leading-relaxed mb-6">
+          <span data-lang="en">
+            End-to-end promotional campaigns, brand activations, and corporate events
+            that connect Saudi businesses to the audiences who matter most.
+          </span>
+          <span data-lang="ar">
+            حملاتٌ ترويجيةٌ متكاملة، تنشيطٌ للعلامات التجارية، وفعاليّاتٌ مؤسّسية
+            تربط الشركات السعودية بالجمهور الأهمّ.
+          </span>
+        </p>
+        <ul class="space-y-2 text-sm text-ink-soft mb-6">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Brand activations &amp; on-ground events</span><span data-lang="ar">تنشيط العلامات والفعاليات الميدانية</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Premium corporate gifting programmes</span><span data-lang="ar">برامج هدايا مؤسسية فاخرة</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Exhibition &amp; conference support</span><span data-lang="ar">دعم المعارض والمؤتمرات</span></li>
+        </ul>
+        <a href="#contact" class="text-navy font-medium inline-flex items-center gap-2 hover:text-gold transition-colors">
+          <span data-lang="en">Plan a campaign</span>
+          <span data-lang="ar">خطّط لحملة</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 rtl-flip"></i>
+        </a>
+      </div>
+
+      <!-- Calligraphy -->
+      <div class="service-card bg-white border border-line rounded-lg p-8 lg:p-10 reveal" style="transition-delay:0.3s">
+        <div class="flex items-start justify-between mb-6">
+          <div class="service-icon-frame">
+            <i data-lucide="pen-tool" class="w-6 h-6"></i>
+          </div>
+          <span class="text-gold/40 font-display text-5xl font-light leading-none">04</span>
+        </div>
+        <h3 class="font-display text-navy text-3xl font-medium mb-3">
+          <span data-lang="en">Calligraphy</span>
+          <span data-lang="ar">الخطّ العربي</span>
+        </h3>
+        <!-- Decorative arabic specimen -->
+        <div class="font-arabic-display text-gold text-3xl mb-3 select-none" dir="rtl">بسم الله</div>
+        <p class="text-ink-soft leading-relaxed mb-6">
+          <span data-lang="en">
+            Bespoke Arabic calligraphy — corporate identity work, premium gifts, and
+            architectural lettering. A discipline kept alive by the steadiness of the hand.
+          </span>
+          <span data-lang="ar">
+            خطٌّ عربيٌّ مُخصّص — أعمالُ هويةٍ مؤسّسية، هدايا فاخرة، وحروفٌ معمارية.
+            فنٌّ يبقى حيّاً بثبات اليد.
+          </span>
+        </p>
+        <ul class="space-y-2 text-sm text-ink-soft mb-6">
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Corporate logos &amp; identity lettering</span><span data-lang="ar">شعاراتٌ مؤسّسيةٌ وهويّاتٌ خطّية</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Architectural &amp; signage calligraphy</span><span data-lang="ar">خطٌّ معماريٌّ وللوحاتٍ تجارية</span></li>
+          <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-gold flex-shrink-0"></i><span data-lang="en">Premium gifts &amp; commemorative pieces</span><span data-lang="ar">هدايا فاخرة وقطعٌ تذكارية</span></li>
+        </ul>
+        <a href="#contact" class="text-navy font-medium inline-flex items-center gap-2 hover:text-gold transition-colors">
+          <span data-lang="en">Commission a piece</span>
+          <span data-lang="ar">اطلب عملاً مُخصّصاً</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 rtl-flip"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FEATURED PROJECTS -->
+<!-- ============================================== -->
+<section id="projects" class="relative py-24 lg:py-32 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-6">
+      <div class="reveal">
+        <div class="section-eyebrow mb-4">
+          <span data-lang="en">Selected Work</span>
+          <span data-lang="ar">أعمالٌ مختارة</span>
+        </div>
+        <h2 class="font-display font-light text-navy text-4xl lg:text-5xl leading-tight mb-4">
+          <span data-lang="en" class="lang-block">A discreet portfolio,<br>built over decades.</span>
+          <span data-lang="ar" class="lang-block">سجلُّ أعمالٍ هادئ،<br>بُنيَ على مرّ العقود.</span>
+        </h2>
+      </div>
+      <p class="lg:max-w-md text-ink-soft leading-relaxed reveal" style="transition-delay:0.1s">
+        <span data-lang="en">
+          A small selection of recent engagements across our four disciplines.
+          Most of our work is delivered confidentially for institutional clients.
+        </span>
+        <span data-lang="ar">
+          مجموعةٌ صغيرةٌ من المهامّ الحديثة عبر مجالاتنا الأربعة.
+          معظم أعمالنا تُنفّذ بسريّةٍ تامة لعملاءَ مؤسّسيين.
+        </span>
+      </p>
+    </div>
+
+    <!-- Filter chips -->
+    <div class="flex flex-wrap gap-2 mb-10 reveal" style="transition-delay:0.15s">
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-navy text-white" data-filter="all">
+        <span data-lang="en">All</span>
+        <span data-lang="ar">الكلّ</span>
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white border border-line text-ink hover:border-gold hover:text-navy transition-colors" data-filter="trading">
+        <span data-lang="en">Trading</span>
+        <span data-lang="ar">التجارة</span>
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white border border-line text-ink hover:border-gold hover:text-navy transition-colors" data-filter="advertising">
+        <span data-lang="en">Advertising</span>
+        <span data-lang="ar">الإعلان</span>
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white border border-line text-ink hover:border-gold hover:text-navy transition-colors" data-filter="promotion">
+        <span data-lang="en">Promotion</span>
+        <span data-lang="ar">الترويج</span>
+      </button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-white border border-line text-ink hover:border-gold hover:text-navy transition-colors" data-filter="calligraphy">
+        <span data-lang="en">Calligraphy</span>
+        <span data-lang="ar">الخطّ العربي</span>
+      </button>
+    </div>
+
+    <!-- Projects grid -->
+    <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="project-card group reveal" data-category="calligraphy">
+        <div class="project-image aspect-[4/5] rounded-md overflow-hidden mb-4 flex items-center justify-center relative">
+          <div class="font-arabic-display text-gold text-7xl select-none">هَدَكَة</div>
+          <div class="absolute bottom-4 ltr:left-4 rtl:right-4 px-3 py-1 bg-gold text-navy-deep text-xs font-semibold rounded">
+            <span data-lang="en">Calligraphy</span><span data-lang="ar">الخطّ العربي</span>
+          </div>
+        </div>
+        <h3 class="font-display text-navy text-xl font-medium mb-1">
+          <span data-lang="en">Identity Lettering — Confidential Client</span>
+          <span data-lang="ar">حروف هوية — عميلٌ سرّي</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="en">Custom Diwani · 2024</span>
+          <span data-lang="ar">ديواني مُخصّص · ٢٠٢٤</span>
+        </p>
+      </div>
+
+      <div class="project-card group reveal" data-category="advertising" style="transition-delay:0.05s">
+        <div class="project-image aspect-[4/5] rounded-md overflow-hidden mb-4 flex items-center justify-center relative bg-gradient-to-br from-navy via-navy-deep to-navy-light">
+          <div class="text-center text-white/30 px-6">
+            <i data-lucide="megaphone" class="w-12 h-12 mx-auto mb-3 text-gold"></i>
+            <div class="font-display text-2xl font-light">Eastern Province Campaign</div>
+          </div>
+          <div class="absolute bottom-4 ltr:left-4 rtl:right-4 px-3 py-1 bg-gold text-navy-deep text-xs font-semibold rounded">
+            <span data-lang="en">Advertising</span><span data-lang="ar">الإعلان</span>
+          </div>
+        </div>
+        <h3 class="font-display text-navy text-xl font-medium mb-1">
+          <span data-lang="en">Outdoor Campaign — Industrial Sector</span>
+          <span data-lang="ar">حملةٌ خارجيّة — القطاع الصناعي</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="en">Print &amp; outdoor · 2023</span>
+          <span data-lang="ar">طباعة وخارجية · ٢٠٢٣</span>
+        </p>
+      </div>
+
+      <div class="project-card group reveal" data-category="trading" style="transition-delay:0.1s">
+        <div class="project-image aspect-[4/5] rounded-md overflow-hidden mb-4 flex items-center justify-center relative bg-gradient-to-br from-gold-soft to-white">
+          <div class="text-navy/40 text-center px-6">
+            <i data-lucide="package" class="w-12 h-12 mx-auto mb-3 text-gold"></i>
+            <div class="font-display text-2xl font-light">Government Supply</div>
+          </div>
+          <div class="absolute bottom-4 ltr:left-4 rtl:right-4 px-3 py-1 bg-gold text-navy-deep text-xs font-semibold rounded">
+            <span data-lang="en">Trading</span><span data-lang="ar">التجارة</span>
+          </div>
+        </div>
+        <h3 class="font-display text-navy text-xl font-medium mb-1">
+          <span data-lang="en">Multi-Year Supply Contract</span>
+          <span data-lang="ar">عقد توريد متعدد السنوات</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="en">Safety equipment &amp; uniforms · 2022 — present</span>
+          <span data-lang="ar">معدات السلامة والزيّ الموحّد · ٢٠٢٢ — حتى الآن</span>
+        </p>
+      </div>
+
+      <div class="project-card group reveal" data-category="promotion" style="transition-delay:0.15s">
+        <div class="project-image aspect-[4/5] rounded-md overflow-hidden mb-4 flex items-center justify-center relative bg-gradient-to-br from-navy-deep via-navy to-navy-light">
+          <div class="text-white/40 text-center px-6">
+            <i data-lucide="sparkles" class="w-12 h-12 mx-auto mb-3 text-gold"></i>
+            <div class="font-display text-2xl font-light text-white/70">Vision 2030 Activation</div>
+          </div>
+          <div class="absolute bottom-4 ltr:left-4 rtl:right-4 px-3 py-1 bg-gold text-navy-deep text-xs font-semibold rounded">
+            <span data-lang="en">Promotion</span><span data-lang="ar">الترويج</span>
+          </div>
+        </div>
+        <h3 class="font-display text-navy text-xl font-medium mb-1">
+          <span data-lang="en">Corporate Brand Activation</span>
+          <span data-lang="ar">تنشيط علامة تجارية مؤسّسية</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="en">National Day · 2024</span>
+          <span data-lang="ar">اليوم الوطني · ٢٠٢٤</span>
+        </p>
+      </div>
+
+      <div class="project-card group reveal" data-category="calligraphy" style="transition-delay:0.2s">
+        <div class="project-image aspect-[4/5] rounded-md overflow-hidden mb-4 flex items-center justify-center relative bg-gradient-to-br from-gold-soft via-white to-gold-soft">
+          <div class="font-arabic-display text-navy text-6xl select-none">الخَط</div>
+          <div class="absolute bottom-4 ltr:left-4 rtl:right-4 px-3 py-1 bg-gold text-navy-deep text-xs font-semibold rounded">
+            <span data-lang="en">Calligraphy</span><span data-lang="ar">الخطّ العربي</span>
+          </div>
+        </div>
+        <h3 class="font-display text-navy text-xl font-medium mb-1">
+          <span data-lang="en">Architectural Lettering</span>
+          <span data-lang="ar">حروفٌ معماريّة</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="en">Thuluth script · 2023</span>
+          <span data-lang="ar">خطّ الثلث · ٢٠٢٣</span>
+        </p>
+      </div>
+
+      <div class="project-card group reveal" data-category="trading" style="transition-delay:0.25s">
+        <div class="project-image aspect-[4/5] rounded-md overflow-hidden mb-4 flex items-center justify-center relative bg-gradient-to-br from-navy-light to-navy">
+          <div class="text-white/30 text-center px-6">
+            <i data-lucide="briefcase" class="w-12 h-12 mx-auto mb-3 text-gold"></i>
+            <div class="font-display text-2xl font-light text-white/70">Corporate Gifting</div>
+          </div>
+          <div class="absolute bottom-4 ltr:left-4 rtl:right-4 px-3 py-1 bg-gold text-navy-deep text-xs font-semibold rounded">
+            <span data-lang="en">Trading</span><span data-lang="ar">التجارة</span>
+          </div>
+        </div>
+        <h3 class="font-display text-navy text-xl font-medium mb-1">
+          <span data-lang="en">Premium Corporate Gifts</span>
+          <span data-lang="ar">هدايا مؤسّسية فاخرة</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="en">Multi-quarter programme · 2024</span>
+          <span data-lang="ar">برنامج متعدد الفصول · ٢٠٢٤</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- WHY HADAKAH STRIP (Dark) -->
+<!-- ============================================== -->
+<section class="relative py-24 lg:py-32 bg-navy-deep grain overflow-hidden">
+  <!-- Pattern overlay -->
+  <div class="absolute inset-0 pattern-overlay opacity-40"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+    <div class="max-w-3xl mb-16 reveal">
+      <div class="section-eyebrow mb-4">
+        <span data-lang="en">Why Hadakah</span>
+        <span data-lang="ar">لماذا هَدَكَة</span>
+      </div>
+      <h2 class="font-display font-light text-white text-4xl lg:text-5xl leading-tight">
+        <span data-lang="en" class="lang-block">Saudi-rooted, quietly excellent.</span>
+        <span data-lang="ar" class="lang-block">جذورٌ سعوديّة، تميّزٌ هادئ.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10 lg:gap-16">
+      <div class="reveal">
+        <div class="font-display text-gold text-6xl font-light mb-4">01</div>
+        <h3 class="font-display text-white text-2xl font-medium mb-3">
+          <span data-lang="en">Locally rooted</span>
+          <span data-lang="ar">ترتكز محلياً</span>
+        </h3>
+        <p class="text-white/70 leading-relaxed">
+          <span data-lang="en">
+            Built in Al-Khobar in 1998. Decades of relationships with KSA institutions
+            mean we understand procurement processes, regional preferences, and the
+            unwritten codes of doing business well in the Kingdom.
+          </span>
+          <span data-lang="ar">
+            تأسّسنا في الخُبَر عام ١٩٩٨. عقودٌ من العلاقات مع المؤسسات السعودية
+            تعني أنّنا نفهم آليّات الشراء، والتفضيلات الإقليمية، والقواعد غير المكتوبة
+            للعمل الراقي في المملكة.
+          </span>
+        </p>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="font-display text-gold text-6xl font-light mb-4">02</div>
+        <h3 class="font-display text-white text-2xl font-medium mb-3">
+          <span data-lang="en">Bilingual by default</span>
+          <span data-lang="ar">ثنائيّة اللغة بطبيعتنا</span>
+        </h3>
+        <p class="text-white/70 leading-relaxed">
+          <span data-lang="en">
+            Every brief, every deliverable, every conversation — natively in Arabic and
+            English. Not translated. Not approximated. Properly written by people who
+            speak both as their own.
+          </span>
+          <span data-lang="ar">
+            كلُّ توجيه، وكلُّ تسليم، وكلُّ حوار — بالعربية والإنجليزية على حدٍّ سواء.
+            لا ترجمة. لا تقريب. تُكتَب باحترافٍ من قِبل من يتحدّثون بكلتا اللغتين كأبناءٍ لها.
+          </span>
+        </p>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="font-display text-gold text-6xl font-light mb-4">03</div>
+        <h3 class="font-display text-white text-2xl font-medium mb-3">
+          <span data-lang="en">Quietly accountable</span>
+          <span data-lang="ar">مساءَلَةٌ هادئة</span>
+        </h3>
+        <p class="text-white/70 leading-relaxed">
+          <span data-lang="en">
+            One named senior contact per engagement. Direct WhatsApp. Honest timelines.
+            No middlemen, no surprises in invoicing, no excuses if something is late —
+            just delivery and follow-through.
+          </span>
+          <span data-lang="ar">
+            مسؤولٌ واحدٌ مُعيَّنٌ لكلّ مهمّة. تواصلٌ مباشرٌ عبر واتساب. جداولُ زمنيّةٌ صادقة.
+            لا وسطاء، ولا مفاجآت في الفواتير، ولا أعذار إن تأخّر شيء —
+            بل تسليمٌ ومتابعة.
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- PROCESS -->
+<!-- ============================================== -->
+<section id="process" class="relative py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+      <!-- Left: heading -->
+      <div class="lg:col-span-5 lg:sticky lg:top-32 lg:self-start reveal">
+        <div class="section-eyebrow mb-4">
+          <span data-lang="en">Our Process</span>
+          <span data-lang="ar">منهجيّتنا</span>
+        </div>
+        <h2 class="font-display font-light text-navy text-4xl lg:text-5xl leading-tight mb-6">
+          <span data-lang="en" class="lang-block">How a Hadakah engagement actually works.</span>
+          <span data-lang="ar" class="lang-block">كيف تسير مهمّة هَدَكَة فعلياً.</span>
+        </h2>
+        <p class="text-ink-soft leading-relaxed">
+          <span data-lang="en">
+            Four steps. Predictable. Transparent. Used unchanged across trading,
+            advertising, promotion, and calligraphy briefs.
+          </span>
+          <span data-lang="ar">
+            أربع خطوات. واضحة. شفّافة. تُستخدم كما هي عبر مهامّ
+            التجارة والإعلان والترويج والخطّ العربي.
+          </span>
+        </p>
+      </div>
+
+      <!-- Right: timeline steps -->
+      <div class="lg:col-span-7 space-y-2">
+        <!-- Step 1 -->
+        <div class="timeline-step flex gap-6 pb-10 reveal">
+          <div class="flex-shrink-0 w-12 h-12 bg-gold-soft rounded-full flex items-center justify-center font-display text-navy font-bold text-lg">1</div>
+          <div>
+            <h3 class="font-display text-navy text-2xl font-medium mb-2">
+              <span data-lang="en">Listen</span>
+              <span data-lang="ar">الإصغاء</span>
+            </h3>
+            <p class="text-ink-soft leading-relaxed">
+              <span data-lang="en">
+                A 30-minute conversation — in Arabic or English — to understand the
+                goal, the audience, the constraint, and the timeline. We take notes.
+                We don't pitch. We listen first.
+              </span>
+              <span data-lang="ar">
+                محادثةٌ مدّتها ثلاثون دقيقة — بالعربية أو الإنجليزية — لفهم الهدف،
+                والجمهور، والقيود، والجدول الزمني. نُدوِّن ملاحظاتنا.
+                لا نَعرض. نُصغي أولاً.
+              </span>
+            </p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="timeline-step flex gap-6 pb-10 reveal" style="transition-delay:0.1s">
+          <div class="flex-shrink-0 w-12 h-12 bg-gold-soft rounded-full flex items-center justify-center font-display text-navy font-bold text-lg">2</div>
+          <div>
+            <h3 class="font-display text-navy text-2xl font-medium mb-2">
+              <span data-lang="en">Propose</span>
+              <span data-lang="ar">الاقتراح</span>
+            </h3>
+            <p class="text-ink-soft leading-relaxed">
+              <span data-lang="en">
+                Within three working days — a written proposal with scope, deliverables,
+                timeline, and clear pricing. No vague brackets. No "starting from."
+                One number, one timeline, one signature.
+              </span>
+              <span data-lang="ar">
+                في غضون ثلاثة أيام عمل — مقترحٌ مكتوبٌ يحدّد النطاق، والتسليمات،
+                والجدول الزمني، والتسعير الواضح. بلا أقواس مبهمة. بلا "ابتداءً من".
+                رقمٌ واحد، جدولٌ واحد، توقيعٌ واحد.
+              </span>
+            </p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="timeline-step flex gap-6 pb-10 reveal" style="transition-delay:0.2s">
+          <div class="flex-shrink-0 w-12 h-12 bg-gold-soft rounded-full flex items-center justify-center font-display text-navy font-bold text-lg">3</div>
+          <div>
+            <h3 class="font-display text-navy text-2xl font-medium mb-2">
+              <span data-lang="en">Deliver</span>
+              <span data-lang="ar">التنفيذ</span>
+            </h3>
+            <p class="text-ink-soft leading-relaxed">
+              <span data-lang="en">
+                Weekly check-ins by WhatsApp or email — your preference. Working
+                samples shared as the project develops, so the final delivery is
+                never a surprise. Adjustments made early, not late.
+              </span>
+              <span data-lang="ar">
+                متابعاتٌ أسبوعيّةٌ عبر واتساب أو البريد الإلكتروني — حسب تفضيلكم.
+                نماذجُ عملٍ تُشارَك مع تقدّم المشروع، لئلّا يكون التسليم النهائيّ مفاجأة.
+                التعديلات تُجرى مبكراً، لا متأخراً.
+              </span>
+            </p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="timeline-step flex gap-6 reveal" style="transition-delay:0.3s">
+          <div class="flex-shrink-0 w-12 h-12 bg-gold rounded-full flex items-center justify-center font-display text-navy-deep font-bold text-lg">4</div>
+          <div>
+            <h3 class="font-display text-navy text-2xl font-medium mb-2">
+              <span data-lang="en">Stand behind it</span>
+              <span data-lang="ar">الوقوف خلف العمل</span>
+            </h3>
+            <p class="text-ink-soft leading-relaxed">
+              <span data-lang="en">
+                Once delivered, the engagement does not end. We follow up at 30, 60,
+                and 90 days. We answer questions. We support. We are reachable.
+                That is what 25 years of relationships look like.
+              </span>
+              <span data-lang="ar">
+                بعد التسليم، لا تنتهي المهمّة. نتواصل بعد ثلاثين، وستّين، وتسعين يوماً.
+                نُجيب على الأسئلة. ندعم. نبقى في المتناول.
+                هكذا تبدو خمسةٌ وعشرون عاماً من العلاقات.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- CLIENT LOGOS / TRUST -->
+<!-- ============================================== -->
+<section class="relative py-20 bg-surface border-y border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="text-center mb-12 reveal">
+      <div class="section-eyebrow mb-3">
+        <span data-lang="en">Trusted across the Kingdom</span>
+        <span data-lang="ar">موثوقون عبر المملكة</span>
+      </div>
+      <p class="text-ink-muted text-sm max-w-2xl mx-auto">
+        <span data-lang="en">A representative selection. Many institutional clients prefer to remain unnamed.</span>
+        <span data-lang="ar">عيّنةٌ تمثيليّة. يفضّل كثيرٌ من العملاء المؤسّسيين عدم ذكر أسمائهم.</span>
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 reveal" style="transition-delay:0.1s">
+      <div class="client-logo rounded">CLIENT 01</div>
+      <div class="client-logo rounded">CLIENT 02</div>
+      <div class="client-logo rounded">CLIENT 03</div>
+      <div class="client-logo rounded">CLIENT 04</div>
+      <div class="client-logo rounded">CLIENT 05</div>
+      <div class="client-logo rounded">CLIENT 06</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- TESTIMONIAL -->
+<!-- ============================================== -->
+<section class="relative py-24 lg:py-32 bg-white">
+  <div class="max-w-5xl mx-auto px-6 lg:px-12 text-center">
+    <div class="reveal">
+      <i data-lucide="quote" class="w-12 h-12 text-gold mx-auto mb-8 rtl-flip"></i>
+      <blockquote class="font-display font-light text-navy text-2xl lg:text-4xl leading-tight mb-8 italic">
+        <span data-lang="en">
+          "Quiet, careful, and on time — the rarest combination in this market.
+          Hadakah delivers what they say they will, and they say what they mean."
+        </span>
+        <span data-lang="ar">
+          "هادئون، دقيقون، وفي الموعد — أندرُ تركيبةٍ في هذه السوق.
+          هَدَكَة تُسلِّم ما تقوله، وتقول ما تعنيه."
+        </span>
+      </blockquote>
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-soft to-gold flex items-center justify-center font-display text-navy font-bold">A</div>
+        <div class="text-start rtl:text-end">
+          <div class="font-medium text-navy">
+            <span data-lang="en">Procurement Director</span>
+            <span data-lang="ar">مدير المشتريات</span>
+          </div>
+          <div class="text-ink-muted text-sm">
+            <span data-lang="en">Eastern Province · 2024</span>
+            <span data-lang="ar">المنطقة الشرقية · ٢٠٢٤</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- CONTACT -->
+<!-- ============================================== -->
+<section id="contact" class="relative py-24 lg:py-32 bg-navy-deep grain overflow-hidden">
+  <div class="absolute inset-0 pattern-overlay opacity-30"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+    <div class="max-w-3xl mb-12 lg:mb-16 reveal">
+      <div class="section-eyebrow mb-4">
+        <span data-lang="en">Begin the conversation</span>
+        <span data-lang="ar">ابدأ المحادثة</span>
+      </div>
+      <h2 class="font-display font-light text-white text-4xl lg:text-5xl leading-tight mb-4">
+        <span data-lang="en" class="lang-block">Tell us what you need.<br>We'll respond within one business day.</span>
+        <span data-lang="ar" class="lang-block">أخبرنا بما تحتاج.<br>سنردُّ في غضون يوم عملٍ واحد.</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8">
+      <!-- Form (left) -->
+      <div class="lg:col-span-7 reveal">
+        <form id="contactForm" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-white/70 text-sm font-medium mb-2">
+                <span data-lang="en">Full name</span>
+                <span data-lang="ar">الاسم الكامل</span>
+                <span class="text-gold ms-1">*</span>
+              </label>
+              <input type="text" required class="form-input w-full px-4 py-3 rounded-md text-sm" placeholder="" />
+            </div>
+            <div>
+              <label class="block text-white/70 text-sm font-medium mb-2">
+                <span data-lang="en">Company</span>
+                <span data-lang="ar">جهة العمل</span>
+              </label>
+              <input type="text" class="form-input w-full px-4 py-3 rounded-md text-sm" placeholder="" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-white/70 text-sm font-medium mb-2">
+                <span data-lang="en">Email</span>
+                <span data-lang="ar">البريد الإلكتروني</span>
+                <span class="text-gold ms-1">*</span>
+              </label>
+              <input type="email" required class="form-input w-full px-4 py-3 rounded-md text-sm" placeholder="" />
+            </div>
+            <div>
+              <label class="block text-white/70 text-sm font-medium mb-2">
+                <span data-lang="en">Phone / WhatsApp</span>
+                <span data-lang="ar">الهاتف / واتساب</span>
+              </label>
+              <input type="tel" dir="ltr" class="form-input w-full px-4 py-3 rounded-md text-sm" placeholder="+966 ..." />
+            </div>
+          </div>
+          <div>
+            <label class="block text-white/70 text-sm font-medium mb-2">
+              <span data-lang="en">Service of interest</span>
+              <span data-lang="ar">الخدمة المطلوبة</span>
+              <span class="text-gold ms-1">*</span>
+            </label>
+            <select required class="form-input w-full px-4 py-3 rounded-md text-sm">
+              <option value="" data-lang="en">Select a service…</option>
+              <option value="" data-lang="ar">اختر خدمة…</option>
+              <option value="trading"><span data-lang="en">Trading</span><span data-lang="ar">التجارة</span></option>
+              <option value="advertising">Advertising / الإعلان</option>
+              <option value="promotion">Promotion / الترويج</option>
+              <option value="calligraphy">Calligraphy / الخطّ العربي</option>
+              <option value="other">Other / أخرى</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-white/70 text-sm font-medium mb-2">
+              <span data-lang="en">Tell us about your project</span>
+              <span data-lang="ar">حدّثنا عن مشروعك</span>
+              <span class="text-gold ms-1">*</span>
+            </label>
+            <textarea required rows="5" class="form-input w-full px-4 py-3 rounded-md text-sm resize-none" placeholder=""></textarea>
+          </div>
+          <button type="submit" class="btn-cta w-full sm:w-auto px-8 py-3.5 rounded-md inline-flex items-center justify-center gap-2 text-sm">
+            <span data-lang="en">Send Inquiry</span>
+            <span data-lang="ar">أرسل الاستفسار</span>
+            <i data-lucide="send" class="w-4 h-4 rtl-flip"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Direct contact info (right) -->
+      <div class="lg:col-span-5 reveal" style="transition-delay:0.1s">
+        <div class="bg-gradient-to-br from-navy to-navy-light rounded-lg p-8 lg:p-10 border border-gold/20">
+          <h3 class="font-display text-white text-2xl font-medium mb-6">
+            <span data-lang="en">Or reach us directly</span>
+            <span data-lang="ar">أو تواصل مباشرة</span>
+          </h3>
+
+          <div class="space-y-5 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded bg-gold/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="map-pin" class="w-4 h-4 text-gold"></i>
+              </div>
+              <div>
+                <div class="text-white/50 text-xs uppercase tracking-wider mb-1">
+                  <span data-lang="en">Office</span>
+                  <span data-lang="ar">المقرّ</span>
+                </div>
+                <div class="text-white text-sm leading-relaxed">
+                  <span data-lang="en">Building #3603, Unit #103<br>2nd Cross @ Al Majmaa Street<br>Al-Thuqbah, Al-Khobar 34623, KSA</span>
+                  <span data-lang="ar">مبنى ٣٦٠٣، الوحدة ١٠٣<br>التقاطع الثاني، شارع المجمّع<br>الثقبة، الخبر ٣٤٦٢٣، السعودية</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded bg-gold/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="phone" class="w-4 h-4 text-gold"></i>
+              </div>
+              <div>
+                <div class="text-white/50 text-xs uppercase tracking-wider mb-1">
+                  <span data-lang="en">Telephone</span>
+                  <span data-lang="ar">الهاتف</span>
+                </div>
+                <a href="tel:+966138948877" class="phone-ltr text-white text-sm hover:text-gold transition-colors">+966 13 894 8877</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded bg-gold/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="mail" class="w-4 h-4 text-gold"></i>
+              </div>
+              <div>
+                <div class="text-white/50 text-xs uppercase tracking-wider mb-1">
+                  <span data-lang="en">Email</span>
+                  <span data-lang="ar">البريد</span>
+                </div>
+                <a href="mailto:info@hadakah.com" class="text-white text-sm hover:text-gold transition-colors">info@hadakah.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded bg-gold/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="clock" class="w-4 h-4 text-gold"></i>
+              </div>
+              <div>
+                <div class="text-white/50 text-xs uppercase tracking-wider mb-1">
+                  <span data-lang="en">Hours</span>
+                  <span data-lang="ar">ساعات العمل</span>
+                </div>
+                <div class="text-white text-sm">
+                  <span data-lang="en">Sun – Thu · 8:30 AM – 5:30 PM</span>
+                  <span data-lang="ar">الأحد – الخميس · ٨:٣٠ ص – ٥:٣٠ م</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/966138948877" target="_blank" class="btn-cta w-full px-6 py-3.5 rounded-md inline-flex items-center justify-center gap-2 text-sm">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span data-lang="en">Chat on WhatsApp</span>
+            <span data-lang="ar">تواصل عبر واتساب</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FOOTER -->
+<!-- ============================================== -->
+<footer class="bg-navy-deep border-t border-gold/20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Logo + about -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-gold to-gold-deep rounded flex items-center justify-center">
+            <span class="font-display font-bold text-navy-deep text-lg" data-lang="en">H</span>
+            <span class="font-display font-bold text-navy-deep text-lg" data-lang="ar">ه</span>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-xl leading-none">
+              <span data-lang="en">Hadakah</span>
+              <span data-lang="ar">هَدَكَة</span>
+            </div>
+            <div class="text-[10px] tracking-[0.25em] uppercase text-gold/80 mt-0.5">
+              <span data-lang="en">Enterprise · 1998</span>
+              <span data-lang="ar">مؤسسة · ١٩٩٨</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">
+          <span data-lang="en">A Saudi house of trade and craft. Trading, advertising, promotion, and calligraphy — done quietly and well, since 1998.</span>
+          <span data-lang="ar">بيتٌ سعوديٌّ للتجارة والحرفة. التجارة، الإعلان، الترويج، والخطّ العربي — بإتقانٍ هادئ، منذ عام ١٩٩٨.</span>
+        </p>
+      </div>
+
+      <!-- Navigate -->
+      <div>
+        <div class="text-gold text-xs uppercase tracking-[0.2em] font-semibold mb-4">
+          <span data-lang="en">Navigate</span>
+          <span data-lang="ar">روابط</span>
+        </div>
+        <ul class="space-y-2.5 text-white/70 text-sm">
+          <li><a href="#about" class="hover:text-gold transition-colors"><span data-lang="en">About</span><span data-lang="ar">من نحن</span></a></li>
+          <li><a href="#services" class="hover:text-gold transition-colors"><span data-lang="en">Services</span><span data-lang="ar">خدماتنا</span></a></li>
+          <li><a href="#projects" class="hover:text-gold transition-colors"><span data-lang="en">Projects</span><span data-lang="ar">أعمالنا</span></a></li>
+          <li><a href="#process" class="hover:text-gold transition-colors"><span data-lang="en">Process</span><span data-lang="ar">منهجيّتنا</span></a></li>
+          <li><a href="#contact" class="hover:text-gold transition-colors"><span data-lang="en">Contact</span><span data-lang="ar">تواصل</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="text-gold text-xs uppercase tracking-[0.2em] font-semibold mb-4">
+          <span data-lang="en">Disciplines</span>
+          <span data-lang="ar">مجالاتنا</span>
+        </div>
+        <ul class="space-y-2.5 text-white/70 text-sm">
+          <li><a href="#services" class="hover:text-gold transition-colors"><span data-lang="en">Trading</span><span data-lang="ar">التجارة</span></a></li>
+          <li><a href="#services" class="hover:text-gold transition-colors"><span data-lang="en">Advertising</span><span data-lang="ar">الإعلان</span></a></li>
+          <li><a href="#services" class="hover:text-gold transition-colors"><span data-lang="en">Promotion</span><span data-lang="ar">الترويج</span></a></li>
+          <li><a href="#services" class="hover:text-gold transition-colors"><span data-lang="en">Calligraphy</span><span data-lang="ar">الخطّ العربي</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="text-gold text-xs uppercase tracking-[0.2em] font-semibold mb-4">
+          <span data-lang="en">Contact</span>
+          <span data-lang="ar">تواصل</span>
+        </div>
+        <ul class="space-y-2.5 text-white/70 text-sm">
+          <li class="flex items-start gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-gold flex-shrink-0"></i>
+            <span>
+              <span data-lang="en">Al-Thuqbah, Al-Khobar 34623<br>Eastern Province, KSA</span>
+              <span data-lang="ar">الثقبة، الخبر ٣٤٦٢٣<br>المنطقة الشرقية، السعودية</span>
+            </span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4 text-gold flex-shrink-0"></i>
+            <a href="tel:+966138948877" class="phone-ltr hover:text-gold transition-colors">+966 13 894 8877</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-gold flex-shrink-0"></i>
+            <a href="mailto:info@hadakah.com" class="hover:text-gold transition-colors">info@hadakah.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer bottom strip -->
+    <div class="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="text-white/40 text-xs">
+        <span data-lang="en">© 2026 Hadakah Enterprise · A division of Al Khabbaz Corporate Enterprise · All rights reserved.</span>
+        <span data-lang="ar">© ٢٠٢٦ مؤسسة هَدَكَة · إحدى مؤسسات الخباز التجارية · جميع الحقوق محفوظة.</span>
+      </div>
+      <div class="flex items-center gap-4 text-white/40 text-xs">
+        <a href="#" class="hover:text-gold transition-colors">
+          <span data-lang="en">Privacy</span>
+          <span data-lang="ar">الخصوصية</span>
+        </a>
+        <span class="text-white/20">·</span>
+        <a href="#" class="hover:text-gold transition-colors">
+          <span data-lang="en">Terms</span>
+          <span data-lang="ar">الشروط</span>
+        </a>
+        <span class="text-white/20">·</span>
+        <span data-lang="en">Built with care.</span>
+        <span data-lang="ar">صُنع بعناية.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/966138948877" target="_blank" id="whatsappBtn" class="whatsapp-btn fixed bottom-6 ltr:right-6 rtl:left-6 w-14 h-14 bg-green rounded-full shadow-2xl flex items-center justify-center text-white z-40 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Toast -->
+<div id="toast" class="toast">
+  <i data-lucide="check-circle" class="w-5 h-5"></i>
+  <span data-lang="en">Thank you — we'll respond within one business day.</span>
+  <span data-lang="ar">شكراً لكم — سنردُّ في غضون يوم عملٍ واحد.</span>
+</div>
+
+<!-- Scripts -->
+<script>
+  // ===== Inline SVG icon system (no CDN dependency) =====
+  const ICONS = {
+    'globe': '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20a14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+    'menu': '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>',
+    'x': '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+    'check': '<path d="M20 6 9 17l-5-5"/>',
+    'check-circle': '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+    'package': '<path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
+    'megaphone': '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+    'sparkles': '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>',
+    'pen-tool': '<path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/>',
+    'briefcase': '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+    'quote': '<path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>',
+    'map-pin': '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+    'phone': '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    'mail': '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+    'clock': '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    'send': '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>',
+    'message-circle': '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+  };
+
+  function renderIcon(name, classes) {
+    const path = ICONS[name];
+    if (!path) return '';
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${classes || ''}">${path}</svg>`;
+  }
+
+  function initIcons() {
+    document.querySelectorAll('[data-lucide]').forEach(el => {
+      // Only replace once
+      if (el.dataset.iconRendered === 'true') return;
+      const name = el.getAttribute('data-lucide');
+      const classes = el.className || '';
+      const wrapper = document.createElement('span');
+      wrapper.innerHTML = renderIcon(name, classes);
+      const svg = wrapper.firstChild;
+      if (svg) {
+        // Mark as rendered to avoid re-replacing
+        svg.dataset.iconRendered = 'true';
+        svg.setAttribute('data-lucide', name);
+        el.replaceWith(svg);
+      }
+    });
+  }
+
+  // Initialize icons immediately or after DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initIcons);
+  } else {
+    initIcons();
+  }
+
+  // ====== LANGUAGE TOGGLE ======
+  function toggleLanguage() {
+    const html = document.documentElement;
+    const currentLang = html.getAttribute('lang');
+    const newLang = currentLang === 'en' ? 'ar' : 'en';
+    const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
+
+    document.body.classList.add('lang-fade', 'fading');
+    setTimeout(() => {
+      html.setAttribute('lang', newLang);
+      html.setAttribute('dir', newDir);
+      document.body.classList.remove('fading');
+      setTimeout(() => document.body.classList.remove('lang-fade'), 300);
+      // Re-initialize icons after DOM updates
+      initIcons();
+    }, 200);
+  }
+
+  document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+  document.getElementById('langToggleMobile').addEventListener('click', () => {
+    toggleLanguage();
+    closeMobileMenu();
+  });
+
+  // ====== MOBILE MENU ======
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+  function openMobileMenu() {
+    mobileMenu.classList.add('open');
+    mobileBackdrop.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    mobileBackdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+  document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+  mobileBackdrop.addEventListener('click', closeMobileMenu);
+  document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMobileMenu));
+
+  // ====== SCROLL: NAVBAR BLUR ======
+  const navbar = document.getElementById('navbar');
+  function handleScroll() {
+    if (window.scrollY > 30) navbar.classList.add('nav-scrolled');
+    else navbar.classList.remove('nav-scrolled');
+  }
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  // ====== REVEAL ON SCROLL ======
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Safety net: any reveal still hidden after 2s gets force-shown
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 2000);
+
+  // ====== PROJECT FILTERING ======
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-navy', 'text-white');
+        b.classList.add('bg-white', 'border', 'border-line', 'text-ink');
+      });
+      btn.classList.add('bg-navy', 'text-white');
+      btn.classList.remove('bg-white', 'border', 'border-line', 'text-ink');
+
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = '';
+          card.style.opacity = '0';
+          setTimeout(() => { card.style.transition = 'opacity 0.4s'; card.style.opacity = '1'; }, 50);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ====== FORM SUBMIT (mock) ======
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    form.reset();
+  });
+
+  // ====== SMOOTH SCROLL FOR ANCHORS ======
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = target.offsetTop - 80;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ====== ACTIVE NAV ON SCROLL ======
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav);
+</script>
+
+</body>
+</html>
